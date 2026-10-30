@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Магазин механических клавиатур KeyCraft: клавиатуры, свитчи и кейкапы с доставкой по России.">
+    <title>KeyCraft — магазин механических клавиатур</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="js/data.js" defer></script>
+    <script src="js/product-utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/favorites.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">KeyCraft</a>
+
+            <a class="header-cart" href="cart.html">
+                <svg class="header-cart__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="19" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="19" r="1.6" fill="currentColor"/>
+                </svg>
+                <span class="header-cart__text">Корзина</span>
+                <span class="header-cart__count" data-cart-count>0</span><span class="visually-hidden"> шт.</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-toggle__icon" aria-hidden="true"></span>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page" id="main">
+        <section class="hero" aria-labelledby="hero-title">
+            <div class="hero__content">
+                <h1 class="hero__title" id="hero-title">KeyCraft — механические клавиатуры</h1>
+                <p class="hero__text">
+                    Клавиатуры, свитчи и кейкапы для работы, учёбы и игр.
+                    Поможем подобрать клавиатуру под ваш стиль печати.
+                </p>
+                <div class="hero__actions">
+                    <a class="button button--primary" href="catalog.html">Перейти в каталог</a>
+                    <button class="button button--secondary" type="button" data-action="consultation">Получить консультацию</button>
+                </div>
+            </div>
+
+            <picture class="hero__media">
+                <source media="(min-width: 1024px)" type="image/webp"
+                    srcset="images/hero/hero-desktop-800.webp 800w, images/hero/hero-desktop-1200.webp 1200w"
+                    sizes="(min-width: 1100px) 480px, 42vw"
+                    width="800" height="450">
+                <source media="(min-width: 1024px)"
+                    srcset="images/hero/hero-desktop-800.jpg 800w, images/hero/hero-desktop-1200.jpg 1200w"
+                    sizes="(min-width: 1100px) 480px, 42vw"
+                    width="800" height="450">
+                <source type="image/webp"
+                    srcset="images/hero/hero-mobile-480.webp 480w, images/hero/hero-mobile-800.webp 800w"
+                    sizes="calc(100vw - 64px)">
+                <img class="hero__image"
+                    src="images/hero/hero-mobile-480.jpg"
+                    srcset="images/hero/hero-mobile-480.jpg 480w, images/hero/hero-mobile-800.jpg 800w"
+                    sizes="calc(100vw - 64px)"
+                    width="480" height="360"
+                    fetchpriority="high"
+                    alt="Механическая клавиатура с серо-белыми кейкапами и красной клавишей Escape">
+            </picture>
+        </section>
+
+        <section class="section" id="advantages">
+            <h2 class="section__title">Почему выбирают KeyCraft</h2>
+            <ul class="advantages-list">
+                <li class="advantages-list__item">
+                    <h3 class="advantages-list__title">Проверенные модели</h3>
+                    <p class="advantages-list__text">Только проверенные клавиатуры и комплектующие: каждую тестируем перед отправкой.</p>
+                </li>
+                <li class="advantages-list__item">
+                    <h3 class="advantages-list__title">Свитчи на выбор</h3>
+                    <p class="advantages-list__text">Тип свитчей можно выбрать заранее — линейные, тактильные или кликающие.</p>
+                </li>
+                <li class="advantages-list__item">
+                    <h3 class="advantages-list__title">Бесплатная доставка</h3>
+                    <p class="advantages-list__text">Бесплатно при заказе от 5 000 руб., по Москве 1–2 дня.</p>
+                </li>
+                <li class="advantages-list__item">
+                    <h3 class="advantages-list__title">Гарантия 12 месяцев</h3>
+                    <p class="advantages-list__text">Гарантия на все клавиатуры, заберём и проверим при поломке.</p>
+                </li>
+            </ul>
+        </section>
+
+        <section class="section" id="popular" aria-labelledby="popular-title">
+            <div class="section__header">
+                <h2 class="section__title" id="popular-title">Популярные товары</h2>
+                <a class="button button--secondary" href="catalog.html">Весь каталог</a>
+            </div>
+
+            <div class="products-grid" data-popular-products></div>
+            <noscript>
+                <p class="catalog-empty">Товары выводятся с помощью JavaScript. Включите JavaScript в браузере, чтобы увидеть каталог.</p>
+            </noscript>
+        </section>
+
+        <aside class="aside-info" aria-labelledby="how-to-order">
+            <h2 class="aside-info__title" id="how-to-order">Как оформить заказ</h2>
+            <p class="aside-info__text">
+                Добавьте товары в корзину и оформите заказ — корзина сохранится, даже если закрыть браузер.
+                Если сомневаетесь в выборе, нажмите «Получить консультацию» и оставьте телефон.
+                Промокод <strong>KEYCRAFT10</strong> даёт скидку 10% на заказ.
+            </p>
+        </aside>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">KeyCraft</h2>
+                <p class="site-footer__text">Механические клавиатуры, свитчи и кейкапы.</p>
+            </div>
+
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">Связаться с нами</h2>
+                <p class="site-footer__text">
+                    Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                </p>
+                <p class="site-footer__text">
+                    E-mail: <a href="mailto:info@example.com">info@example.com</a>
+                </p>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы каталога">
+                <h2 class="site-footer__title">Каталог</h2>
+                <ul class="site-footer__list">
+                    <li><a href="catalog.html?category=keyboards">Клавиатуры</a></li>
+                    <li><a href="catalog.html?category=switches">Свитчи</a></li>
+                    <li><a href="catalog.html?category=keycaps">Кейкапы</a></li>
+                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__text">&copy; 2026 KeyCraft. Учебный проект.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p class="site-footer__text">Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, авторы и лицензии указаны в README.</p>
+        </div>
+    </footer>
+
+    <a class="scroll-top" href="#top">Наверх</a>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+        <div class="order-dialog__header">
+            <h2 class="order-dialog__title" id="order-dialog-title">Быстрая заявка</h2>
+            <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно заявки">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <p class="order-dialog__product" id="order-dialog-product" hidden></p>
+        <p class="order-dialog__text">Оставьте телефон — перезвоним за 15 минут в рабочее время.</p>
+
+        <form class="order-form" id="dialog-form" action="#" method="post" novalidate data-form="dialog">
+            <input id="selected-product" name="selected-product" type="hidden">
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="dialog-name">Имя *</label>
+                    <input class="order-form__input" id="dialog-name" name="name" type="text" data-validate="name" aria-describedby="dialog-name-error" autocomplete="given-name" autofocus>
+                    <p class="form-error" id="dialog-name-error"></p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="dialog-phone">Телефон *</label>
+                    <input class="order-form__input" id="dialog-phone" name="phone" type="tel" data-validate="phone" aria-describedby="dialog-phone-hint dialog-phone-error" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00">
+                    <small class="order-form__hint" id="dialog-phone-hint">Можно вводить в любом формате, например 89001234567</small>
+                    <p class="form-error" id="dialog-phone-error"></p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="dialog-comment">Комментарий</label>
+                    <textarea class="order-form__textarea" id="dialog-comment" name="comment" rows="3" placeholder="Удобное время звонка или вопрос"></textarea>
+                    <p class="form-error" id="dialog-comment-error"></p>
+                </div>
+
+                <div class="order-form__field order-form__field--wide">
+                    <label class="order-form__label order-form__label--checkbox" for="dialog-agreement">
+                        <input class="order-form__checkbox" id="dialog-agreement" name="agreement" type="checkbox" data-validate="agreement" aria-describedby="dialog-agreement-error">
+                        Я согласен на обработку данных *
+                    </label>
+                    <p class="form-error" id="dialog-agreement-error"></p>
+                </div>
+
+            <p class="form-message" tabindex="-1" aria-live="polite"></p>
+
+            <div class="order-form__actions">
+                <button class="button button--secondary" type="button" data-close-dialog>Закрыть</button>
+                <button class="button button--primary" type="submit">Отправить заявку</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+
+</html>

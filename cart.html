@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Корзина магазина KeyCraft: выбранные товары, количество, промокод и итоговая сумма заказа.">
+    <title>Корзина — KeyCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="js/data.js" defer></script>
+    <script src="js/product-utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/favorites.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">KeyCraft</a>
+
+            <a class="header-cart header-cart--active" aria-current="page" href="cart.html">
+                <svg class="header-cart__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="19" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="19" r="1.6" fill="currentColor"/>
+                </svg>
+                <span class="header-cart__text">Корзина</span>
+                <span class="header-cart__count" data-cart-count>0</span><span class="visually-hidden"> шт.</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-toggle__icon" aria-hidden="true"></span>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page" id="main">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current" aria-current="page">Корзина</span>
+        </nav>
+
+        <section class="section">
+            <h1 class="section__title">Корзина</h1>
+
+            <div class="cart-layout" data-cart-content hidden>
+                <div class="cart-layout__items">
+                    <ul class="cart-list" data-cart-list aria-label="Товары в корзине"></ul>
+                    <button class="button button--secondary" type="button" data-cart-clear>Очистить корзину</button>
+                </div>
+
+                <aside class="cart-summary" aria-labelledby="summary-title">
+                    <h2 class="cart-summary__title" id="summary-title">Ваш заказ</h2>
+                    <dl class="cart-summary__list">
+                        <div class="cart-summary__row">
+                            <dt data-summary-count>Товары</dt>
+                            <dd data-summary-subtotal></dd>
+                        </div>
+                        <div class="cart-summary__row">
+                            <dt>Скидка на товары</dt>
+                            <dd data-summary-discount></dd>
+                        </div>
+                        <div class="cart-summary__row" data-summary-promo-row hidden>
+                            <dt data-summary-promo-label>Промокод</dt>
+                            <dd data-summary-promo></dd>
+                        </div>
+                        <div class="cart-summary__row">
+                            <dt>Доставка</dt>
+                            <dd data-summary-delivery></dd>
+                        </div>
+                        <div class="cart-summary__row cart-summary__row--total">
+                            <dt>К оплате</dt>
+                            <dd data-summary-total></dd>
+                        </div>
+                    </dl>
+                    <p class="cart-summary__note" data-delivery-note></p>
+
+                    <form class="promo-form" data-promo-form novalidate>
+                        <label class="promo-form__label" for="promo-code">Промокод</label>
+                        <div class="promo-form__row">
+                            <input class="promo-form__input" id="promo-code" name="promo" type="text" autocomplete="off" aria-describedby="promo-message promo-hint">
+                            <button class="button button--secondary" type="submit">Применить</button>
+                        </div>
+                        <p class="promo-form__message" id="promo-message" aria-live="polite"></p>
+                        <p class="promo-form__hint" id="promo-hint">Учебные промокоды: KEYCRAFT10 — скидка 10%, SWITCH500 — минус 500 руб. от 3 000 руб.</p>
+                        <button class="promo-form__remove" type="button" data-promo-remove hidden>Отменить промокод</button>
+                    </form>
+
+                    <a class="button button--primary cart-summary__checkout" href="order.html?from=cart">Оформить заказ</a>
+                </aside>
+            </div>
+
+            <div class="cart-empty" data-cart-empty hidden>
+                <h2 class="cart-empty__title">Корзина пуста</h2>
+                <p>Добавьте товары из каталога — корзина сохранится, даже если закрыть браузер.</p>
+                <a class="button button--primary" href="catalog.html">Перейти в каталог</a>
+            </div>
+
+            <noscript>
+                <p class="catalog-empty">Корзина работает с помощью JavaScript. Включите JavaScript в браузере.</p>
+            </noscript>
+        </section>
+
+        <section class="section" aria-labelledby="recommended-title">
+            <h2 class="section__title" id="recommended-title">Вам может понравиться</h2>
+            <div class="products-grid" data-recommended-products></div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">KeyCraft</h2>
+                <p class="site-footer__text">Механические клавиатуры, свитчи и кейкапы.</p>
+            </div>
+
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">Связаться с нами</h2>
+                <p class="site-footer__text">
+                    Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                </p>
+                <p class="site-footer__text">
+                    E-mail: <a href="mailto:info@example.com">info@example.com</a>
+                </p>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы каталога">
+                <h2 class="site-footer__title">Каталог</h2>
+                <ul class="site-footer__list">
+                    <li><a href="catalog.html?category=keyboards">Клавиатуры</a></li>
+                    <li><a href="catalog.html?category=switches">Свитчи</a></li>
+                    <li><a href="catalog.html?category=keycaps">Кейкапы</a></li>
+                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__text">&copy; 2026 KeyCraft. Учебный проект.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p class="site-footer__text">Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, авторы и лицензии указаны в README.</p>
+        </div>
+    </footer>
+
+    <a class="scroll-top" href="#top">Наверх</a>
+</body>
+
+</html>

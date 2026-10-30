@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Каталог KeyCraft: механические клавиатуры, свитчи, кейкапы и аксессуары с поиском, фильтрами и сортировкой.">
+    <title>Каталог — KeyCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="js/data.js" defer></script>
+    <script src="js/product-utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/favorites.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">KeyCraft</a>
+
+            <a class="header-cart" href="cart.html">
+                <svg class="header-cart__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="19" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="19" r="1.6" fill="currentColor"/>
+                </svg>
+                <span class="header-cart__text">Корзина</span>
+                <span class="header-cart__count" data-cart-count>0</span><span class="visually-hidden"> шт.</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-toggle__icon" aria-hidden="true"></span>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page" id="main">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current" aria-current="page">Каталог</span>
+        </nav>
+
+        <section class="section">
+            <h1 class="section__title">Каталог</h1>
+            <p>
+                Клавиатуры, свитчи, кейкапы и аксессуары. Список обновляется сразу,
+                пока вы вводите запрос или меняете фильтры.
+            </p>
+        </section>
+
+        <div class="catalog-layout">
+            <aside class="catalog-filters catalog-layout__filters" aria-labelledby="filters-title">
+                <div class="catalog-filters__header">
+                    <h2 class="catalog-filters__title" id="filters-title">Поиск и фильтры</h2>
+                    <button class="filters-toggle" type="button" aria-expanded="false" aria-controls="catalog-controls">
+                        <span class="filters-toggle__text">Показать</span><span class="visually-hidden"> фильтры</span>
+                    </button>
+                </div>
+
+                <form class="catalog-controls" id="catalog-controls" role="search" aria-label="Управление каталогом">
+                    <div class="catalog-controls__group">
+                        <label class="catalog-controls__label" for="catalog-search">Поиск товара</label>
+                        <input class="catalog-controls__input" id="catalog-search" type="search" placeholder="Например, Red" autocomplete="off">
+                    </div>
+
+                    <div class="catalog-controls__group">
+                        <label class="catalog-controls__label" for="category-filter">Категория</label>
+                        <select class="catalog-controls__select" id="category-filter">
+                            <option value="all">Все категории</option>
+                            <option value="keyboards">Клавиатуры</option>
+                            <option value="switches">Свитчи</option>
+                            <option value="keycaps">Кейкапы</option>
+                            <option value="accessories">Аксессуары</option>
+                        </select>
+                    </div>
+
+                    <div class="catalog-controls__group">
+                        <label class="catalog-controls__label" for="sort-select">Сортировка</label>
+                        <select class="catalog-controls__select" id="sort-select">
+                            <option value="default">По умолчанию</option>
+                            <option value="price-asc">Сначала дешевле</option>
+                            <option value="price-desc">Сначала дороже</option>
+                            <option value="title-asc">По названию А–Я</option>
+                            <option value="rating-desc">Сначала с высоким рейтингом</option>
+                        </select>
+                    </div>
+
+                    <fieldset class="catalog-controls__group catalog-controls__checks">
+                        <legend class="catalog-controls__label">Показывать</legend>
+                        <label class="filters-form__label">
+                            <input class="filters-form__checkbox" id="only-available" type="checkbox">
+                            Только в наличии
+                        </label>
+                        <label class="filters-form__label">
+                            <input class="filters-form__checkbox" id="only-favorites" type="checkbox">
+                            Только избранное
+                        </label>
+                    </fieldset>
+
+                    <button class="button button--secondary" type="reset">Сбросить фильтры</button>
+                </form>
+            </aside>
+
+            <div class="catalog-layout__products">
+                <p class="catalog-count" aria-live="polite" tabindex="-1"></p>
+
+                <div class="catalog-empty" hidden>
+                    <h2 class="catalog-empty__title">Ничего не нашлось</h2>
+                    <p class="catalog-empty__text" data-empty-query></p>
+                    <p class="catalog-empty__text">Попробуйте другую категорию:</p>
+                    <div class="catalog-empty__actions">
+                        <button class="button button--secondary" type="button" data-empty-category="keyboards">Клавиатуры</button>
+                        <button class="button button--secondary" type="button" data-empty-category="switches">Свитчи</button>
+                        <button class="button button--secondary" type="button" data-empty-category="keycaps">Кейкапы</button>
+                    </div>
+                    <button class="button button--primary" type="button" data-empty-reset>Сбросить все фильтры</button>
+                </div>
+
+                <div class="products-grid products-grid--catalog" data-products-container></div>
+                <noscript>
+                <p class="catalog-empty">Товары выводятся с помощью JavaScript. Включите JavaScript в браузере, чтобы увидеть каталог.</p>
+            </noscript>
+            </div>
+        </div>
+
+        <section class="section catalog-stats" aria-labelledby="stats-title">
+            <h2 class="section__title" id="stats-title">Каталог в цифрах</h2>
+            <p class="js-message">JavaScript пока не выполнился.</p>
+            <p class="product-output"></p>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">KeyCraft</h2>
+                <p class="site-footer__text">Механические клавиатуры, свитчи и кейкапы.</p>
+            </div>
+
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">Связаться с нами</h2>
+                <p class="site-footer__text">
+                    Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                </p>
+                <p class="site-footer__text">
+                    E-mail: <a href="mailto:info@example.com">info@example.com</a>
+                </p>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы каталога">
+                <h2 class="site-footer__title">Каталог</h2>
+                <ul class="site-footer__list">
+                    <li><a href="catalog.html?category=keyboards">Клавиатуры</a></li>
+                    <li><a href="catalog.html?category=switches">Свитчи</a></li>
+                    <li><a href="catalog.html?category=keycaps">Кейкапы</a></li>
+                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__text">&copy; 2026 KeyCraft. Учебный проект.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p class="site-footer__text">Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, авторы и лицензии указаны в README.</p>
+        </div>
+    </footer>
+
+    <a class="scroll-top" href="#top">Наверх</a>
+</body>
+
+</html>

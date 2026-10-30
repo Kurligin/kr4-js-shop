@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Карточка товара KeyCraft: описание, цена, характеристики, сравнение моделей и отзывы.">
+    <title>Товар — KeyCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="js/data.js" defer></script>
+    <script src="js/product-utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/favorites.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">KeyCraft</a>
+
+            <a class="header-cart" href="cart.html">
+                <svg class="header-cart__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="19" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="19" r="1.6" fill="currentColor"/>
+                </svg>
+                <span class="header-cart__text">Корзина</span>
+                <span class="header-cart__count" data-cart-count>0</span><span class="visually-hidden"> шт.</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-toggle__icon" aria-hidden="true"></span>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page" id="main">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <a class="breadcrumbs__link" href="catalog.html">Каталог</a>
+            <span class="breadcrumbs__current" aria-current="page" data-product-crumb>Товар</span>
+        </nav>
+
+        <section class="section product" data-product-page>
+            <div class="product__media" data-product-media data-product-only></div>
+
+            <div class="product__info">
+                <p class="product__category" data-product-category data-product-only></p>
+                <h1 class="product__title" data-product-title>Загрузка товара…</h1>
+                <div data-product-only>
+                    <p data-product-rating></p>
+                    <p data-product-price></p>
+                    <p class="product__saving" data-product-saving hidden></p>
+                    <p class="product__description" data-product-description></p>
+                    <ul class="product__highlights" data-product-features></ul>
+                    <p class="product__stock" data-product-stock></p>
+                    <div class="product__actions" data-product-actions></div>
+                </div>
+                <div class="product-missing" data-product-missing hidden>
+                    <p>Такого товара нет в каталоге: возможно, ссылка устарела или в адресе опечатка.</p>
+                    <a class="button button--primary" href="catalog.html">Вернуться в каталог</a>
+                </div>
+                <noscript>
+                    <p>Описание товара выводится с помощью JavaScript. Включите JavaScript в браузере.</p>
+                </noscript>
+            </div>
+        </section>
+
+        <section class="section" id="specs" data-product-only>
+            <h2 class="section__title" id="specs-title">Характеристики</h2>
+            <div class="table-wrapper" role="region" aria-labelledby="specs-title" tabindex="0">
+                <table class="specs-table">
+                    <caption class="specs-table__caption" data-specs-caption>Характеристики товара</caption>
+                    <thead class="specs-table__head">
+                        <tr>
+                            <th class="specs-table__th" scope="col">Характеристика</th>
+                            <th class="specs-table__th" scope="col">Значение</th>
+                        </tr>
+                    </thead>
+                    <tbody data-specs-body></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="section" id="compare" data-product-only data-compare-section>
+            <h2 class="section__title" id="compare-title">Сравнение клавиатур</h2>
+            <div class="table-wrapper" role="region" aria-labelledby="compare-title" tabindex="0" data-compare-wrapper></div>
+        </section>
+
+        <section class="section" id="reviews" data-product-only>
+            <h2 class="section__title">Отзывы покупателей</h2>
+            <div class="reviews" data-reviews></div>
+            <p class="reviews__empty" data-reviews-empty hidden>Отзывов пока нет — будьте первым, кто поделится впечатлениями.</p>
+        </section>
+
+        <section class="section" id="related" data-product-only data-related-section aria-labelledby="related-title">
+            <h2 class="section__title" id="related-title">Похожие товары</h2>
+            <div class="products-grid" data-related-products></div>
+        </section>
+
+        <section class="section" id="faq">
+            <h2 class="section__title">Частые вопросы</h2>
+            <div class="faq">
+                <details class="faq__item">
+                    <summary class="faq__question">Можно ли поменять свитчи самому?</summary>
+                    <p class="faq__answer">
+                        Да, на моделях с hot-swap свитч вынимается съёмником и вставляется новый, паять не нужно.
+                        Наборы свитчей есть в каталоге.
+                    </p>
+                </details>
+                <details class="faq__item">
+                    <summary class="faq__question">Сохранится ли корзина, если закрыть сайт?</summary>
+                    <p class="faq__answer">
+                        Да, корзина и избранное хранятся в браузере и восстановятся при следующем визите.
+                    </p>
+                </details>
+                <details class="faq__item">
+                    <summary class="faq__question">Какая гарантия и что делать при поломке?</summary>
+                    <p class="faq__answer">
+                        Гарантия 12 месяцев. Оставьте заявку — заберём клавиатуру, проверим и вернём или заменим.
+                    </p>
+                </details>
+                <details class="faq__item">
+                    <summary class="faq__question">Сколько идёт доставка?</summary>
+                    <p class="faq__answer">
+                        По Москве — 1–2 дня, по России — от 3 до 7 дней. Бесплатно при заказе от 5 000 руб.
+                    </p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">KeyCraft</h2>
+                <p class="site-footer__text">Механические клавиатуры, свитчи и кейкапы.</p>
+            </div>
+
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">Связаться с нами</h2>
+                <p class="site-footer__text">
+                    Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                </p>
+                <p class="site-footer__text">
+                    E-mail: <a href="mailto:info@example.com">info@example.com</a>
+                </p>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы каталога">
+                <h2 class="site-footer__title">Каталог</h2>
+                <ul class="site-footer__list">
+                    <li><a href="catalog.html?category=keyboards">Клавиатуры</a></li>
+                    <li><a href="catalog.html?category=switches">Свитчи</a></li>
+                    <li><a href="catalog.html?category=keycaps">Кейкапы</a></li>
+                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__text">&copy; 2026 KeyCraft. Учебный проект.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p class="site-footer__text">Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, авторы и лицензии указаны в README.</p>
+        </div>
+    </footer>
+
+    <a class="scroll-top" href="#top">Наверх</a>
+
+    <dialog class="order-dialog" id="order-dialog" aria-labelledby="order-dialog-title">
+        <div class="order-dialog__header">
+            <h2 class="order-dialog__title" id="order-dialog-title">Быстрая заявка</h2>
+            <button class="order-dialog__close" type="button" data-close-dialog aria-label="Закрыть окно заявки">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <p class="order-dialog__product" id="order-dialog-product" hidden></p>
+        <p class="order-dialog__text">Оставьте телефон — перезвоним за 15 минут в рабочее время.</p>
+
+        <form class="order-form" id="dialog-form" action="#" method="post" novalidate data-form="dialog">
+            <input id="selected-product" name="selected-product" type="hidden">
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="dialog-name">Имя *</label>
+                    <input class="order-form__input" id="dialog-name" name="name" type="text" data-validate="name" aria-describedby="dialog-name-error" autocomplete="given-name" autofocus>
+                    <p class="form-error" id="dialog-name-error"></p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="dialog-phone">Телефон *</label>
+                    <input class="order-form__input" id="dialog-phone" name="phone" type="tel" data-validate="phone" aria-describedby="dialog-phone-hint dialog-phone-error" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00">
+                    <small class="order-form__hint" id="dialog-phone-hint">Можно вводить в любом формате, например 89001234567</small>
+                    <p class="form-error" id="dialog-phone-error"></p>
+                </div>
+
+                <div class="order-form__field">
+                    <label class="order-form__label" for="dialog-comment">Комментарий</label>
+                    <textarea class="order-form__textarea" id="dialog-comment" name="comment" rows="3" placeholder="Удобное время звонка или вопрос"></textarea>
+                    <p class="form-error" id="dialog-comment-error"></p>
+                </div>
+
+                <div class="order-form__field order-form__field--wide">
+                    <label class="order-form__label order-form__label--checkbox" for="dialog-agreement">
+                        <input class="order-form__checkbox" id="dialog-agreement" name="agreement" type="checkbox" data-validate="agreement" aria-describedby="dialog-agreement-error">
+                        Я согласен на обработку данных *
+                    </label>
+                    <p class="form-error" id="dialog-agreement-error"></p>
+                </div>
+
+            <p class="form-message" tabindex="-1" aria-live="polite"></p>
+
+            <div class="order-form__actions">
+                <button class="button button--secondary" type="button" data-close-dialog>Закрыть</button>
+                <button class="button button--primary" type="submit">Отправить заявку</button>
+            </div>
+        </form>
+    </dialog>
+</body>
+
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Контакты магазина KeyCraft: телефон, e-mail, адрес шоурума, часы работы и форма обратной связи.">
+    <title>Контакты — KeyCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="js/data.js" defer></script>
+    <script src="js/product-utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/favorites.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">KeyCraft</a>
+
+            <a class="header-cart" href="cart.html">
+                <svg class="header-cart__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="19" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="19" r="1.6" fill="currentColor"/>
+                </svg>
+                <span class="header-cart__text">Корзина</span>
+                <span class="header-cart__count" data-cart-count>0</span><span class="visually-hidden"> шт.</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-toggle__icon" aria-hidden="true"></span>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page" id="main">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current" aria-current="page">Контакты</span>
+        </nav>
+
+        <section class="section">
+            <h1 class="section__title">Контакты</h1>
+            <p>
+                Поможем подобрать клавиатуру, свитчи и кейкапы.
+                В шоуруме можно попробовать клавиатуры перед покупкой.
+            </p>
+        </section>
+
+        <div class="contacts-layout">
+            <section class="contacts-card" aria-labelledby="contacts-info-title">
+                <h2 class="contacts-card__title" id="contacts-info-title">Как с нами связаться</h2>
+
+                <address class="contacts-list">
+                    <ul class="contacts-list__items">
+                        <li class="contacts-list__item">
+                            <span class="contacts-list__label">Телефон</span>
+                            <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                        </li>
+                        <li class="contacts-list__item">
+                            <span class="contacts-list__label">E-mail</span>
+                            <a href="mailto:info@example.com">info@example.com</a>
+                        </li>
+                        <li class="contacts-list__item">
+                            <span class="contacts-list__label">Шоурум</span>
+                            г. Москва (учебный проект)
+                        </li>
+                        <li class="contacts-list__item">
+                            <span class="contacts-list__label">Часы работы</span>
+                            ежедневно с 10:00 до 20:00
+                        </li>
+                    </ul>
+                </address>
+
+                <div class="contacts-actions">
+                    <a class="button button--primary" href="order.html">Оформить заявку</a>
+                    <a class="button button--secondary" href="catalog.html">Перейти в каталог</a>
+                </div>
+            </section>
+
+            <section class="section" id="feedback" aria-labelledby="feedback-title">
+                <h2 class="section__title" id="feedback-title">Обратная связь</h2>
+                <p>Задайте вопрос — ответим на e-mail в течение рабочего дня.</p>
+
+                <form class="order-form order-form--columns" id="feedback-form" action="#" method="post" novalidate data-form="feedback">
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="feedback-name">Имя *</label>
+                        <input class="order-form__input" id="feedback-name" name="name" type="text" data-validate="name" aria-describedby="feedback-name-error" autocomplete="given-name">
+                        <p class="form-error" id="feedback-name-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="feedback-email">E-mail *</label>
+                        <input class="order-form__input" id="feedback-email" name="email" type="email" data-validate="email" aria-describedby="feedback-email-error" autocomplete="email">
+                        <p class="form-error" id="feedback-email-error"></p>
+                    </div>
+
+                    <div class="order-form__field order-form__field--wide">
+                        <label class="order-form__label" for="feedback-topic">Тема *</label>
+                        <select class="order-form__select" id="feedback-topic" name="topic" data-validate="required" data-message="Выберите тему обращения." aria-describedby="feedback-topic-error">
+                            <option value="">Выберите тему</option>
+                            <option value="choice">Подбор клавиатуры</option>
+                            <option value="delivery">Доставка</option>
+                            <option value="warranty">Гарантия и сервис</option>
+                            <option value="other">Другое</option>
+                        </select>
+                        <p class="form-error" id="feedback-topic-error"></p>
+                    </div>
+
+                    <div class="order-form__field order-form__field--wide">
+                        <label class="order-form__label" for="feedback-message">Сообщение *</label>
+                        <textarea class="order-form__textarea" id="feedback-message" name="message" rows="5" data-validate="message" aria-describedby="feedback-message-error"></textarea>
+                        <p class="form-error" id="feedback-message-error"></p>
+                    </div>
+
+                    <div class="order-form__field order-form__field--wide">
+                        <label class="order-form__label order-form__label--checkbox" for="feedback-agreement">
+                            <input class="order-form__checkbox" id="feedback-agreement" name="agreement" type="checkbox" data-validate="agreement" aria-describedby="feedback-agreement-error">
+                            Я согласен на обработку данных *
+                        </label>
+                        <p class="form-error" id="feedback-agreement-error"></p>
+                    </div>
+
+                    <p class="form-message" tabindex="-1" aria-live="polite"></p>
+
+                    <div class="order-form__actions">
+                        <button class="button button--primary" type="submit">Отправить сообщение</button>
+                    </div>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">KeyCraft</h2>
+                <p class="site-footer__text">Механические клавиатуры, свитчи и кейкапы.</p>
+            </div>
+
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">Связаться с нами</h2>
+                <p class="site-footer__text">
+                    Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                </p>
+                <p class="site-footer__text">
+                    E-mail: <a href="mailto:info@example.com">info@example.com</a>
+                </p>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы каталога">
+                <h2 class="site-footer__title">Каталог</h2>
+                <ul class="site-footer__list">
+                    <li><a href="catalog.html?category=keyboards">Клавиатуры</a></li>
+                    <li><a href="catalog.html?category=switches">Свитчи</a></li>
+                    <li><a href="catalog.html?category=keycaps">Кейкапы</a></li>
+                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__text">&copy; 2026 KeyCraft. Учебный проект.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p class="site-footer__text">Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, авторы и лицензии указаны в README.</p>
+        </div>
+    </footer>
+
+    <a class="scroll-top" href="#top">Наверх</a>
+</body>
+
+</html>

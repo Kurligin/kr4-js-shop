@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Оформление заявки в магазине KeyCraft: выберите товар или оформите корзину, укажите контакты и удобное время связи.">
+    <title>Оформление заявки — KeyCraft</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <script>document.documentElement.classList.add('js');</script>
+    <script src="js/data.js" defer></script>
+    <script src="js/product-utils.js" defer></script>
+    <script src="js/storage.js" defer></script>
+    <script src="js/favorites.js" defer></script>
+    <script src="js/cart.js" defer></script>
+    <script src="js/catalog.js" defer></script>
+    <script src="js/product-page.js" defer></script>
+    <script src="js/modal.js" defer></script>
+    <script src="js/validation.js" defer></script>
+    <script src="js/main.js" defer></script>
+</head>
+
+<body id="top">
+    <a class="skip-link" href="#main">Перейти к основному содержимому</a>
+
+    <header class="site-header">
+        <div class="site-header__inner">
+            <a class="site-header__logo" href="index.html">KeyCraft</a>
+
+            <a class="header-cart" href="cart.html">
+                <svg class="header-cart__icon" width="22" height="22" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                    <path d="M3 4h2l2.4 10.2a1 1 0 0 0 1 .8h8.9a1 1 0 0 0 1-.8L20 8H6.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <circle cx="9" cy="19" r="1.6" fill="currentColor"/>
+                    <circle cx="17" cy="19" r="1.6" fill="currentColor"/>
+                </svg>
+                <span class="header-cart__text">Корзина</span>
+                <span class="header-cart__count" data-cart-count>0</span><span class="visually-hidden"> шт.</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+                <span class="menu-toggle__icon" aria-hidden="true"></span>
+                Меню
+            </button>
+
+            <nav class="site-nav" id="site-nav" aria-label="Основная навигация">
+                <ul class="site-nav__list">
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="index.html">Главная</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="catalog.html">Каталог</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="product.html">Товар</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link site-nav__link--active" aria-current="page" href="order.html">Заявка</a>
+                    </li>
+                    <li class="site-nav__item">
+                        <a class="site-nav__link" href="contacts.html">Контакты</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page" id="main">
+        <nav class="breadcrumbs" aria-label="Навигационная цепочка">
+            <a class="breadcrumbs__link" href="index.html">Главная</a>
+            <span class="breadcrumbs__current" aria-current="page">Оформление заявки</span>
+        </nav>
+
+        <section class="section">
+            <h1 class="section__title">Оформление заявки</h1>
+            <p>
+                Заполните форму — менеджер перезвонит в выбранное время,
+                уточнит комплектацию и рассчитает доставку. Поля со звёздочкой обязательны.
+            </p>
+        </section>
+
+        <div class="order-layout">
+            <section class="section order-layout__form" aria-labelledby="order-form-title">
+                <h2 class="section__title" id="order-form-title">Данные заявки</h2>
+
+                <form class="order-form order-form--columns" id="order-form" action="#" method="post" novalidate data-form="order">
+                    <div class="order-cart order-form__field--wide" data-order-cart hidden>
+                        <h3 class="order-cart__title">Товары из корзины</h3>
+                        <ul class="order-cart__list" data-order-cart-list></ul>
+                        <p class="order-cart__total" data-order-cart-total></p>
+                        <a href="cart.html">Изменить корзину</a>
+                    </div>
+
+                    <div class="order-form__field order-form__field--wide" data-product-field>
+                        <label class="order-form__label" for="order-product">Товар *</label>
+                        <select class="order-form__select" id="order-product" name="product" data-validate="required" data-message="Выберите товар из списка." aria-describedby="order-product-error">
+                        <option value="">Выберите товар</option>
+                        <option value="KeyCraft One 75%">KeyCraft One 75%</option>
+                        <option value="KeyCraft TKL Pro">KeyCraft TKL Pro</option>
+                        <option value="KeyCraft Full 100%">KeyCraft Full 100%</option>
+                        <option value="KeyCraft Mini 60%">KeyCraft Mini 60%</option>
+                        <option value="Набор свитчей">Набор свитчей</option>
+                        <option value="Кейкапы">Кейкапы</option>
+                        <option value="Консультация">Нужна консультация по выбору</option>
+                    </select>
+                        <p class="form-error" id="order-product-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-name">Имя *</label>
+                        <input class="order-form__input" id="order-name" name="name" type="text" data-validate="name" aria-describedby="order-name-error" autocomplete="given-name" placeholder="Введите ваше имя">
+                        <p class="form-error" id="order-name-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-email">E-mail *</label>
+                        <input class="order-form__input" id="order-email" name="email" type="email" data-validate="email" aria-describedby="order-email-error" autocomplete="email" placeholder="example@mail.ru">
+                        <p class="form-error" id="order-email-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-phone">Телефон *</label>
+                        <input class="order-form__input" id="order-phone" name="phone" type="tel" data-validate="phone" aria-describedby="order-phone-hint order-phone-error" inputmode="tel" autocomplete="tel" placeholder="+7 (900) 000-00-00">
+                        <small class="order-form__hint" id="order-phone-hint">Можно вводить в любом формате, например 89001234567</small>
+                        <p class="form-error" id="order-phone-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-date">Дата связи</label>
+                        <input class="order-form__input" id="order-date" name="date" type="date" data-validate="date" aria-describedby="order-date-error">
+                        <p class="form-error" id="order-date-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-time">Удобное время</label>
+                        <select class="order-form__select" id="order-time" name="time">
+                            <option value="any">В любое время</option>
+                            <option value="morning">С 10:00 до 13:00</option>
+                            <option value="day">С 13:00 до 17:00</option>
+                            <option value="evening">С 17:00 до 20:00</option>
+                        </select>
+                        <p class="form-error" id="order-time-error"></p>
+                    </div>
+
+                    <div class="order-form__field">
+                        <label class="order-form__label" for="order-delivery">Способ получения *</label>
+                        <select class="order-form__select" id="order-delivery" name="delivery" data-validate="required" data-message="Выберите способ получения." aria-describedby="order-delivery-error">
+                            <option value="">Выберите способ</option>
+                            <option value="pickup">Самовывоз из шоурума</option>
+                            <option value="courier">Курьер по Москве</option>
+                            <option value="post">Доставка по России</option>
+                        </select>
+                        <p class="form-error" id="order-delivery-error"></p>
+                    </div>
+
+                    <div class="order-form__field order-form__field--wide">
+                        <label class="order-form__label" for="order-comment">Комментарий</label>
+                        <textarea class="order-form__textarea" id="order-comment" name="comment" rows="4" placeholder="Укажите тип свитчей, раскладку или другие пожелания"></textarea>
+                        <p class="form-error" id="order-comment-error"></p>
+                    </div>
+
+                    <div class="order-form__field order-form__field--wide">
+                        <label class="order-form__label order-form__label--checkbox" for="order-agreement">
+                            <input class="order-form__checkbox" id="order-agreement" name="agreement" type="checkbox" data-validate="agreement" aria-describedby="order-agreement-error">
+                            Я согласен на обработку данных *
+                        </label>
+                        <p class="form-error" id="order-agreement-error"></p>
+                    </div>
+
+                    <p class="form-message" tabindex="-1" aria-live="polite"></p>
+
+                    <div class="order-form__actions">
+                        <a class="button button--secondary" href="catalog.html">Вернуться в каталог</a>
+                        <button class="button button--primary" type="submit">Отправить заявку</button>
+                    </div>
+                </form>
+            </section>
+
+            <aside class="order-aside order-layout__aside" aria-labelledby="order-steps-title">
+                <h2 class="order-aside__title" id="order-steps-title">Как проходит заказ</h2>
+                <ol class="order-steps">
+                    <li class="order-steps__item">Вы оставляете заявку на этой странице или оформляете корзину.</li>
+                    <li class="order-steps__item">Менеджер перезванивает в выбранное время.</li>
+                    <li class="order-steps__item">Уточняем свитчи, раскладку и способ доставки.</li>
+                    <li class="order-steps__item">Отправляем заказ и присылаем трек-номер.</li>
+                </ol>
+                <p class="order-aside__note">
+                    Оплата после согласования заказа. Предоплату не берём.
+                </p>
+            </aside>
+        </div>
+    </main>
+
+    <footer class="site-footer" id="contacts">
+        <div class="site-footer__inner">
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">KeyCraft</h2>
+                <p class="site-footer__text">Механические клавиатуры, свитчи и кейкапы.</p>
+            </div>
+
+            <div class="site-footer__col">
+                <h2 class="site-footer__title">Связаться с нами</h2>
+                <p class="site-footer__text">
+                    Телефон: <a href="tel:+79000000000">+7 (900) 000-00-00</a>
+                </p>
+                <p class="site-footer__text">
+                    E-mail: <a href="mailto:info@example.com">info@example.com</a>
+                </p>
+            </div>
+
+            <nav class="site-footer__col" aria-label="Разделы каталога">
+                <h2 class="site-footer__title">Каталог</h2>
+                <ul class="site-footer__list">
+                    <li><a href="catalog.html?category=keyboards">Клавиатуры</a></li>
+                    <li><a href="catalog.html?category=switches">Свитчи</a></li>
+                    <li><a href="catalog.html?category=keycaps">Кейкапы</a></li>
+                    <li><a href="catalog.html?category=accessories">Аксессуары</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <div class="site-footer__bottom">
+            <p class="site-footer__text">&copy; 2026 KeyCraft. Учебный проект.</p>
+            <p class="site-footer__text">Дисциплина: Фронтенд и бэкенд разработка</p>
+            <p class="site-footer__text">Фото: <a href="https://commons.wikimedia.org/">Wikimedia Commons</a>, авторы и лицензии указаны в README.</p>
+        </div>
+    </footer>
+
+    <a class="scroll-top" href="#top">Наверх</a>
+</body>
+
+</html>
